@@ -1,0 +1,4 @@
+import numpy as np
+from gauge_dynamics.gauge import unitary_path,unitary_path_derivative,transform_connection,covariant_derivative
+def test_u3_covariant_derivative():
+ x=np.linspace(-1,1,2001);K=np.array([[.2,.1,0.],[.1,-.3,.05],[0.,.05,.15]],complex);G=unitary_path(K,x);dG=unitary_path_derivative(K,x);A=np.zeros((len(x),3,3),complex);Ap=np.stack([transform_connection(A[k],G[k],dG[k]) for k in range(len(x))]);psi=np.stack([np.array([np.exp(.2j*t),.3*np.sin(t),.2*np.cos(.7*t)],complex) for t in x]);psip=np.einsum('xji,xj->xi',G.conj(),psi);D=covariant_derivative(psi,x,A);Dp=covariant_derivative(psip,x,Ap);target=np.einsum('xji,xj->xi',G.conj(),D); assert np.max(np.linalg.norm(Dp[5:-5]-target[5:-5],axis=1))<2e-6
