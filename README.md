@@ -6,17 +6,18 @@ dynamics.
 ## Implemented
 
 - local $U(N)$ basis transformations;
-- Hermitian gauge connections with convention $D=\partial-iA$;
+- Hermitian gauge connections with convention $D = \partial - iA$;
 - connection transformation
 
 $$
-A'=G^\dagger A G+iG^\dagger\partial G;
+A' = G^\dagger A G + i\,G^\dagger(\partial G);
 $$
 
-- numerical covariance checks for $D'\psi'=G^\dagger D\psi$;
+- numerical covariance checks for $D'\psi' = G^\dagger D\psi$;
 - discrete link-variable and Wilson-loop transformations;
 - $U(3)$ examples;
-- time-reversal projection for Kramers-paired spinor spaces and numerical Kramers-degeneracy tests.
+- time-reversal projection for Kramers-paired spinor spaces and numerical
+  Kramers-degeneracy tests.
 
 ```bash
 pip install -e ".[dev]"
